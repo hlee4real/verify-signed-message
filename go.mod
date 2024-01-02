@@ -1,8 +1,9 @@
-module github.com/bitonicnl/verify-signed-message
+module github.com/hlee4real/verify-signed-message
 
 go 1.18
 
 require (
+	github.com/bitonicnl/verify-signed-message v0.6.3
 	github.com/btcsuite/btcd v0.23.4
 	github.com/btcsuite/btcd/btcec/v2 v2.3.2
 	github.com/btcsuite/btcd/btcutil v1.1.3

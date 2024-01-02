@@ -3,9 +3,8 @@ package internal
 import (
 	"github.com/btcsuite/btcd/btcec/v2"
 	"github.com/btcsuite/btcd/btcutil"
+	"github.com/hlee4real/verify-signed-message/internal/flags"
 	"github.com/samber/lo"
-
-	"github.com/bitonicnl/verify-signed-message/internal/flags"
 )
 
 // GeneratePublicKeyHash returns the public key hash, either compressed or uncompressed, depending on the recovery flag.

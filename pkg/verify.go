@@ -4,6 +4,9 @@ import (
 	"encoding/base64"
 	"errors"
 	"fmt"
+	"github.com/hlee4real/verify-signed-message/internal"
+	"github.com/hlee4real/verify-signed-message/internal/flags"
+	"github.com/hlee4real/verify-signed-message/internal/signature"
 	"reflect"
 	"strings"
 
@@ -12,10 +15,6 @@ import (
 	"github.com/btcsuite/btcd/chaincfg"
 	"github.com/btcsuite/btcd/chaincfg/chainhash"
 	"github.com/samber/lo"
-
-	"github.com/bitonicnl/verify-signed-message/internal"
-	"github.com/bitonicnl/verify-signed-message/internal/flags"
-	"github.com/bitonicnl/verify-signed-message/internal/signature"
 )
 
 // ExpectedSignatureLength contains the fixed signature length all signed messages are expected to have.
@@ -54,6 +53,8 @@ func VerifyWithChain(signedMessage SignedMessage, net *chaincfg.Params) (bool, e
 	if len(signatureEncoded) != ExpectedSignatureLength {
 		return false, fmt.Errorf("wrong signature length: %d instead of 65", len(signatureEncoded))
 	}
+
+	signatureEncoded[0] = 31
 
 	// Ensure signature has proper recovery flag
 	recoveryFlag := int(signatureEncoded[0])
